@@ -9,17 +9,23 @@ interface BookmarkEntry {
 interface StoreState {
   bookmarks: User[];
   bookmarkHistory: BookmarkEntry[];
+  departments: string[];
+  selectedDepartments: string[];
   addBookmark: (user: User) => void;
   removeBookmark: (id: number) => void;
   getRating: (id: number) => number;
   isBookmarked: (id: number) => boolean;
   toggleBookmark: (user: User, removable?: boolean) => void;
   toggleBookmarkFromHome: (user: User) => void;
+  setDepartments: (deps: string[]) => void;
+  setSelectedDepartments: (deps: string[]) => void;
 }
 
 export const useStore = create<StoreState>((set, get) => ({
   bookmarks: [],
   bookmarkHistory: [],
+  departments: [],
+  selectedDepartments: [],
   addBookmark: (user) =>
     set((state) => ({
       bookmarks: [...state.bookmarks, user],
@@ -46,4 +52,6 @@ export const useStore = create<StoreState>((set, get) => ({
     if (!bookmarked) get().addBookmark(user);
   },
   getRating: (id) => Math.floor(Math.random() * 5) + 1,
+  setDepartments: (deps) => set({ departments: deps }),
+  setSelectedDepartments: (deps) => set({ selectedDepartments: deps }),
 }));

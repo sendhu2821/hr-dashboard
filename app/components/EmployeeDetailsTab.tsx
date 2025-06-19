@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import ColorBadge from "./ColorBadge";
+import { employeeDetailsSets } from "@/app/lib/dataUtils";
 
 // Define tab ID type
 type TabId = "tab1" | "tab2" | "tab3";
@@ -25,10 +26,18 @@ export default function EmployeeDetailTab({
     { id: "tab3", label: "Feedback" },
   ];
 
+  const detailSet = employeeDetailsSets[user.id % employeeDetailsSets.length];
+
   const tabContent: Record<TabId, JSX.Element> = {
-    tab1: <p>Overview content...</p>,
-    tab2: <p>Projects content...</p>,
-    tab3: <p>Feedback content...</p>,
+    tab1: <p>{detailSet.overview}</p>,
+    tab2: (
+      <ul className="list-disc list-inside space-y-1">
+        {detailSet.projects.map((project, index) => (
+          <li key={index}>{project}</li>
+        ))}
+      </ul>
+    ),
+    tab3: <p>{detailSet.feedback}</p>,
   };
 
   return (

@@ -16,7 +16,7 @@ const ConfirmModal = ({
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <div className="bg-white p-3 rounded-md shadow-md w-[90%] max-w-sm">
-        <h2 className="text-lg font-semibold mb-4">Remove Bookmark</h2>
+        <h2 className="text-lg font-semibold mb-4">{title}</h2>
         <p className="mb-4">{message}</p>
         <div className="flex justify-end gap-2">
           <button
