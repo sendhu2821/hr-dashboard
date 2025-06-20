@@ -36,7 +36,7 @@ export function BookmarkButton({
   user: User;
   removable?: boolean;
 }) {
-  const { isBookmarked, toggleBookmark, toggleBookmarkFromHome } = useStore();
+  const { isBookmarked, toggleBookmark } = useStore();
 
   const bookmarked = isBookmarked(user.id);
 

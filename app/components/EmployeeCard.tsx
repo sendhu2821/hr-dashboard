@@ -18,8 +18,6 @@ export default function EmployeeCard({
   removable = false,
   actionButton,
 }: Props) {
-  const { addBookmark } = useStore();
-
   const rating = getRating(user.id);
 
   return (
